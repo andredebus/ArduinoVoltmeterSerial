@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C686D1F2-D277-4B58-BF42-9864F66EC343}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>$safeprojectname$</RootNamespace>
+    <RootNamespace>Arduino_Serial</RootNamespace>
     <AssemblyName>Arduino Serial</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
