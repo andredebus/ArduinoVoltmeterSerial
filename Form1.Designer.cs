@@ -40,6 +40,7 @@ namespace Arduino_Serial
             this.Btn4 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.Btn5 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,14 +58,14 @@ namespace Arduino_Serial
             // 
             this.txb1.BackColor = System.Drawing.Color.Black;
             this.txb1.Cursor = System.Windows.Forms.Cursors.No;
-            this.txb1.Font = new System.Drawing.Font("LCD", 48F);
+            this.txb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F);
             this.txb1.ForeColor = System.Drawing.Color.Lime;
             this.txb1.Location = new System.Drawing.Point(33, 52);
             this.txb1.MaxLength = 6;
             this.txb1.Name = "txb1";
             this.txb1.ReadOnly = true;
             this.txb1.ShortcutsEnabled = false;
-            this.txb1.Size = new System.Drawing.Size(294, 157);
+            this.txb1.Size = new System.Drawing.Size(294, 80);
             this.txb1.TabIndex = 1;
             this.txb1.Text = "--.--";
             this.txb1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -132,11 +133,22 @@ namespace Arduino_Serial
             this.Btn5.UseVisualStyleBackColor = true;
             this.Btn5.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(612, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 16);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Datum / Zeit";
+            // 
             // Form1
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1107, 658);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Btn5);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Btn4);
@@ -168,6 +180,7 @@ namespace Arduino_Serial
         public System.Windows.Forms.TextBox txb1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button Btn5;
+        private System.Windows.Forms.Label label1;
     }
 
 }
