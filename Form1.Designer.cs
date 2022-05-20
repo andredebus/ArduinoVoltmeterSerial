@@ -48,12 +48,13 @@ namespace Arduino_Serial
             // 
             // Btn1
             // 
+            this.Btn1.BackColor = System.Drawing.Color.DimGray;
             this.Btn1.Location = new System.Drawing.Point(33, 12);
             this.Btn1.Name = "Btn1";
             this.Btn1.Size = new System.Drawing.Size(167, 59);
             this.Btn1.TabIndex = 0;
             this.Btn1.Text = "Verbinden";
-            this.Btn1.UseVisualStyleBackColor = true;
+            this.Btn1.UseVisualStyleBackColor = false;
             this.Btn1.Click += new System.EventHandler(this.Btn1_Click);
             // 
             // txb1
@@ -88,38 +89,43 @@ namespace Arduino_Serial
             // 
             // Btn2
             // 
+            this.Btn2.BackColor = System.Drawing.Color.DimGray;
             this.Btn2.Location = new System.Drawing.Point(33, 580);
             this.Btn2.Name = "Btn2";
             this.Btn2.Size = new System.Drawing.Size(227, 46);
             this.Btn2.TabIndex = 3;
             this.Btn2.Text = "Beenden";
-            this.Btn2.UseVisualStyleBackColor = true;
+            this.Btn2.UseVisualStyleBackColor = false;
             this.Btn2.Click += new System.EventHandler(this.Btn2_Click);
             // 
             // Btn3
             // 
+            this.Btn3.BackColor = System.Drawing.Color.DimGray;
             this.Btn3.Location = new System.Drawing.Point(33, 94);
             this.Btn3.Name = "Btn3";
             this.Btn3.Size = new System.Drawing.Size(167, 59);
             this.Btn3.TabIndex = 4;
             this.Btn3.Text = "Trennen";
-            this.Btn3.UseVisualStyleBackColor = true;
+            this.Btn3.UseVisualStyleBackColor = false;
             this.Btn3.Click += new System.EventHandler(this.Btn3_Click);
             // 
             // Btn4
             // 
+            this.Btn4.BackColor = System.Drawing.Color.DimGray;
+            this.Btn4.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
             this.Btn4.Location = new System.Drawing.Point(344, 580);
             this.Btn4.Name = "Btn4";
             this.Btn4.Size = new System.Drawing.Size(227, 46);
             this.Btn4.TabIndex = 5;
             this.Btn4.Text = "Neustart";
-            this.Btn4.UseVisualStyleBackColor = true;
+            this.Btn4.UseVisualStyleBackColor = false;
             this.Btn4.Click += new System.EventHandler(this.Button1_Click);
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.Black;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.No;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.White;
             this.textBox1.Location = new System.Drawing.Point(615, 42);
@@ -129,16 +135,16 @@ namespace Arduino_Serial
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(470, 498);
             this.textBox1.TabIndex = 0;
-            this.textBox1.UseWaitCursor = true;
             // 
             // Btn5
             // 
+            this.Btn5.BackColor = System.Drawing.Color.DimGray;
             this.Btn5.Location = new System.Drawing.Point(267, 12);
             this.Btn5.Name = "Btn5";
             this.Btn5.Size = new System.Drawing.Size(214, 60);
             this.Btn5.TabIndex = 6;
             this.Btn5.Text = "Messung Starten";
-            this.Btn5.UseVisualStyleBackColor = true;
+            this.Btn5.UseVisualStyleBackColor = false;
             this.Btn5.Click += new System.EventHandler(this.Button2_Click);
             // 
             // label1
@@ -168,7 +174,7 @@ namespace Arduino_Serial
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(984, 23);
+            this.label3.Location = new System.Drawing.Point(980, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 16);
             this.label3.TabIndex = 9;
@@ -190,7 +196,8 @@ namespace Arduino_Serial
             this.Controls.Add(this.Btn2);
             this.Controls.Add(this.Btn1);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
