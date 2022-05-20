@@ -11,21 +11,22 @@ namespace Arduino_Serial
         {
             InitializeComponent();
 
-            Btn3.Enabled = false;   
+            Btn3.Enabled = false;
+            Btn3.Enabled = false;
 
         }
 
         SerialPort port;
-        private void textBox1_Enter(Object sender, System.EventArgs e)
+        private void TextBox1_Enter(Object sender, System.EventArgs e)
         {
             textBox1.SelectionStart = 0;
             textBox1.SelectionLength = 0;
         }
-        private void btn1_Click(object sender, EventArgs e)
+        private void Btn1_Click(object sender, EventArgs e)
         {
             try
             {
-                port = new SerialPort("COM6", 115200);
+                port = new SerialPort("COM3", 115200);
                 port.DataReceived += new SerialDataReceivedEventHandler(ReceivedSerialHandler);
                 port.Open();
 
@@ -51,31 +52,31 @@ namespace Arduino_Serial
             Invoke(
                 (MethodInvoker)delegate
             {
-                string timeNow = DateTime.Now.ToString();
-                string tmpSerial = sp.ReadExisting();
                 Thread.Sleep(500);
-                this.textBox1.SelectionStart = 0;
+                string ZeitAktuell = DateTime.Now.ToString();
+                string tmpSerial = sp.ReadExisting();
+                string WertVolt = tmpSerial.Substring(0, 7);
                 //textBox1.AppendText($"{timeNow}\t{tmpSerial.Replace(",","\t")}");
-                textBox1.Text = $"{timeNow}\t{tmpSerial.Replace(",", "\t")}" + textBox1.Text;
-                txb1.Text = tmpSerial.Substring(0, 6);
+                textBox1.Text = $" {ZeitAktuell}\t{tmpSerial.Replace(",", " \t")}" + textBox1.Text;
+                txb1.Text = WertVolt.Replace(".",",");
             }
                     );
         }
 
-        private void btn2_Click(object sender, EventArgs e)
+        private void Btn2_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void btn3_Click(object sender, EventArgs e)
+        private void Btn3_Click(object sender, EventArgs e)
         {
             try
             {
                 port.Close();
-                txb1.Text = "--.--V";
+                txb1.Text = "--,-- V";
 
-                Btn1.Enabled = true;
-                Btn3.Enabled = false;
+                Btn1.Enabled = !Btn1.Enabled;
+                Btn3.Enabled = !Btn3.Enabled;
                 
 
             }
@@ -87,13 +88,13 @@ namespace Arduino_Serial
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             Application.Restart();
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             try
             {
