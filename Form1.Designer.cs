@@ -49,6 +49,7 @@ namespace Arduino_Serial
             // Btn1
             // 
             this.Btn1.BackColor = System.Drawing.Color.DimGray;
+            this.Btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn1.Location = new System.Drawing.Point(33, 12);
             this.Btn1.Name = "Btn1";
             this.Btn1.Size = new System.Drawing.Size(167, 59);
@@ -90,6 +91,7 @@ namespace Arduino_Serial
             // Btn2
             // 
             this.Btn2.BackColor = System.Drawing.Color.DimGray;
+            this.Btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn2.Location = new System.Drawing.Point(33, 580);
             this.Btn2.Name = "Btn2";
             this.Btn2.Size = new System.Drawing.Size(227, 46);
@@ -101,6 +103,7 @@ namespace Arduino_Serial
             // Btn3
             // 
             this.Btn3.BackColor = System.Drawing.Color.DimGray;
+            this.Btn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn3.Location = new System.Drawing.Point(33, 94);
             this.Btn3.Name = "Btn3";
             this.Btn3.Size = new System.Drawing.Size(167, 59);
@@ -113,6 +116,7 @@ namespace Arduino_Serial
             // 
             this.Btn4.BackColor = System.Drawing.Color.DimGray;
             this.Btn4.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
+            this.Btn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn4.Location = new System.Drawing.Point(344, 580);
             this.Btn4.Name = "Btn4";
             this.Btn4.Size = new System.Drawing.Size(227, 46);
@@ -139,6 +143,7 @@ namespace Arduino_Serial
             // Btn5
             // 
             this.Btn5.BackColor = System.Drawing.Color.DimGray;
+            this.Btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn5.Location = new System.Drawing.Point(267, 12);
             this.Btn5.Name = "Btn5";
             this.Btn5.Size = new System.Drawing.Size(214, 60);
@@ -197,7 +202,7 @@ namespace Arduino_Serial
             this.Controls.Add(this.Btn1);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;

@@ -16,6 +16,7 @@ public partial class Form1 : Form
 
             Btn3.Enabled = false;
             Btn5.Enabled = false;
+            Btn5.ForeColor = System.Drawing.Color.White;
             //if (Messung == true)
             //{
             //    Btn5.Text = "Messung beenden";
@@ -65,7 +66,7 @@ public partial class Form1 : Form
                 string TmpSerial = sp.ReadExisting();
                 string WertVolt = TmpSerial.Substring(0, 7);
                 //textBox1.AppendText($"{timeNow}\t{tmpSerial.Replace(",","\t")}");
-                textBox1.Text = $"{Messung} {ZeitAktuell}\t{TmpSerial.Replace(",", " \t")}" + textBox1.Text;
+                textBox1.Text = $" {ZeitAktuell}\t{TmpSerial.Replace(",", " \t")}" + textBox1.Text;
                 txb1.Text = WertVolt.Replace(".",",");
             }
                     );
@@ -83,6 +84,7 @@ public partial class Form1 : Form
                 if (Messung)
                 {
                     Btn5.Text = "Messung starten";
+                    Btn5.ForeColor = System.Drawing.Color.White;
                     port.Write("1");
                     Messung = !Messung;
                     port.Close();
@@ -133,10 +135,12 @@ public partial class Form1 : Form
             {
                 if (!Messung)
                 {
+                    Btn5.ForeColor = System.Drawing.Color.Red;
                     Btn5.Text = "Messung beenden";
                 }
                 else
                 {
+                    Btn5.ForeColor = System.Drawing.Color.White;
                     Btn5.Text = "Messung starten";
                 }
                 
