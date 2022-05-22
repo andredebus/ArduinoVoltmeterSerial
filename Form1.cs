@@ -72,8 +72,8 @@ public partial class Form1 : Form
                 row.Cells["Column1"].Value = ZeitAktuell;
                 row.Cells["Column2"].Value = WertVolt.Replace(".", ",");
                 row.Cells["Column3"].Value = TmpSerial.Substring(11);
-                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1; 
-                //dataGridView1.CurrentCell = dataGridView1.Rows[rowId].Cells[0];
+                //dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1; 
+                dataGridView1.CurrentCell = dataGridView1.Rows[rowId].Cells[2];
                 textBox1.Text = $" {ZeitAktuell}\t{TmpSerial.Replace(",", " \t")}" + textBox1.Text;
                 txb1.Text = WertVolt.Replace(".", ",");
                
@@ -165,7 +165,7 @@ public partial class Form1 : Form
             }
             
         }
-       
+
     }
 
 }
