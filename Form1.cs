@@ -17,6 +17,7 @@ public partial class Form1 : Form
             Btn3.Enabled = false;
             Btn5.Enabled = false;
             Btn5.ForeColor = System.Drawing.Color.White;
+            
             //if (Messung == true)
             //{
             //    Btn5.Text = "Messung beenden";
@@ -66,8 +67,16 @@ public partial class Form1 : Form
                 string TmpSerial = sp.ReadExisting();
                 string WertVolt = TmpSerial.Substring(0, 7);
                 //textBox1.AppendText($"{timeNow}\t{tmpSerial.Replace(",","\t")}");
+                int rowId = dataGridView1.Rows.Add();
+                DataGridViewRow row = dataGridView1.Rows[rowId];
+                row.Cells["Column1"].Value = ZeitAktuell;
+                row.Cells["Column2"].Value = WertVolt.Replace(".", ",");
+                row.Cells["Column3"].Value = TmpSerial.Substring(11);
+                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1; 
+                //dataGridView1.CurrentCell = dataGridView1.Rows[rowId].Cells[0];
                 textBox1.Text = $" {ZeitAktuell}\t{TmpSerial.Replace(",", " \t")}" + textBox1.Text;
-                txb1.Text = WertVolt.Replace(".",",");
+                txb1.Text = WertVolt.Replace(".", ",");
+               
             }
                     );
         }
@@ -89,6 +98,7 @@ public partial class Form1 : Form
                     Messung = !Messung;
                     port.Close();
                     txb1.Text = "--,-- V";
+                    dataGridView1.Rows.Clear();
                     textBox1.Clear();
                     Btn1.Enabled = !Btn1.Enabled;
                     Btn3.Enabled = !Btn3.Enabled;
@@ -99,6 +109,7 @@ public partial class Form1 : Form
                     port.Close();
                     txb1.Text = "--,-- V";
                     textBox1.Clear();
+                    dataGridView1.Rows.Clear();
                     Btn1.Enabled = !Btn1.Enabled;
                     Btn3.Enabled = !Btn3.Enabled;
                     Btn5.Enabled = false;
