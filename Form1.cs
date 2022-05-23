@@ -63,7 +63,7 @@ public partial class Form1 : Form
                 (MethodInvoker)delegate
             {
                 //Thread.Sleep(500);
-                string ZeitAktuell = DateTime.Now.ToString();
+                string ZeitAktuell = DateTime.Now.ToString("T");
                 string TmpSerial = sp.ReadExisting();
                 string WertVolt = TmpSerial.Substring(0, 7);
                 //textBox1.AppendText($"{timeNow}\t{tmpSerial.Replace(",","\t")}");
@@ -98,8 +98,6 @@ public partial class Form1 : Form
                     Messung = !Messung;
                     port.Close();
                     txb1.Text = "--,-- V";
-                    dataGridView1.Rows.Clear();
-                    //textBox1.Clear();
                     Btn1.Enabled = !Btn1.Enabled;
                     Btn3.Enabled = !Btn3.Enabled;
                     Btn5.Enabled = false;
@@ -109,7 +107,6 @@ public partial class Form1 : Form
                     port.Close();
                     txb1.Text = "--,-- V";
                     //textBox1.Clear();
-                    dataGridView1.Rows.Clear();
                     Btn1.Enabled = !Btn1.Enabled;
                     Btn3.Enabled = !Btn3.Enabled;
                     Btn5.Enabled = false;
@@ -169,6 +166,10 @@ public partial class Form1 : Form
             
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+        }
     }
 
 }
