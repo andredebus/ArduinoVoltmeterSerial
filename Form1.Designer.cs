@@ -51,6 +51,8 @@ namespace Arduino_Serial
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
+            this.txb2 = new System.Windows.Forms.TextBox();
+            this.cBx1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -90,7 +92,7 @@ namespace Arduino_Serial
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(33, 175);
+            this.groupBox1.Location = new System.Drawing.Point(33, 274);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(448, 185);
             this.groupBox1.TabIndex = 2;
@@ -180,7 +182,7 @@ namespace Arduino_Serial
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.Silver;
-            this.dataGridView1.Location = new System.Drawing.Point(528, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(537, 12);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -251,6 +253,31 @@ namespace Arduino_Serial
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // txb2
+            // 
+            this.txb2.BackColor = System.Drawing.Color.Black;
+            this.txb2.Cursor = System.Windows.Forms.Cursors.No;
+            this.txb2.Enabled = false;
+            this.txb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb2.ForeColor = System.Drawing.Color.GhostWhite;
+            this.txb2.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.txb2.Location = new System.Drawing.Point(37, 223);
+            this.txb2.Name = "txb2";
+            this.txb2.Size = new System.Drawing.Size(118, 26);
+            this.txb2.TabIndex = 12;
+            this.txb2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cBx1
+            // 
+            this.cBx1.AutoSize = true;
+            this.cBx1.ForeColor = System.Drawing.Color.GhostWhite;
+            this.cBx1.Location = new System.Drawing.Point(230, 232);
+            this.cBx1.Name = "cBx1";
+            this.cBx1.Size = new System.Drawing.Size(132, 17);
+            this.cBx1.TabIndex = 13;
+            this.cBx1.Text = "Letzte Messung zuerst";
+            this.cBx1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
@@ -259,6 +286,8 @@ namespace Arduino_Serial
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1003, 555);
+            this.Controls.Add(this.cBx1);
+            this.Controls.Add(this.txb2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Btn5);
@@ -282,6 +311,7 @@ namespace Arduino_Serial
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -299,6 +329,8 @@ namespace Arduino_Serial
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.TextBox txb2;
+        private System.Windows.Forms.CheckBox cBx1;
     }
 
 }
