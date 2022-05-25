@@ -15,6 +15,7 @@ public partial class Form1 : Form
         UInt16 zaehler = 1;
         public Form1()
         {
+            
             InitializeComponent();
 
             Btn3.Enabled = false;
@@ -22,9 +23,27 @@ public partial class Form1 : Form
             Btn5.ForeColor = System.Drawing.Color.White;
                         
         }
-        
-    
-        
+
+       
+        private void cBx1_CheckedChanged(Object sender, EventArgs e)
+            
+        {
+            
+            if (cBx1.Checked)
+
+            {
+                dataGridView1.Sort(dataGridView1.Columns["Column3"], ListSortDirection.Descending);
+            }
+
+            else
+
+            {
+                dataGridView1.Sort(dataGridView1.Columns["Column3"], ListSortDirection.Ascending);
+            }
+
+
+        }
+
         private void Btn1_Click(object sender, EventArgs e)
         {
             try
@@ -65,30 +84,35 @@ public partial class Form1 : Form
                 string TmpSerial = sp.ReadExisting();
                 string WertVolt = TmpSerial.Substring(0, 7);
                 //textBox1.AppendText($"{timeNow}\t{tmpSerial.Replace(",","\t")}");
-                
+                //textBox1.Text = $" {ZeitAktuell}\t{TmpSerial.Replace(",", " \t")}" + textBox1.Text;
+
                 if (MessungAufzeichnen)
                 {
                     int letzteZeile = dataGridView1.RowCount;
-                    int rowId = dataGridView1.Rows.Add();
-                    DataGridViewRow row = dataGridView1.Rows[rowId];
-                    row.Cells["Column1"].Value = ZeitAktuell;
-                    row.Cells["Column2"].Value = WertVolt.Replace(".", ",");
-                    row.Cells["Column3"].Value = zaehler;
+                    int ersteZeile = 0;
+                    int zeileId = dataGridView1.Rows.Add();
+                    DataGridViewRow zeile = dataGridView1.Rows[zeileId];
+                    zeile.Cells["Column1"].Value = ZeitAktuell;
+                    zeile.Cells["Column2"].Value = WertVolt.Replace(".", ",");
+                    zeile.Cells["Column3"].Value = zaehler;
                     zaehler += 1;
                     
                     
                     if (cBx1.Checked)
+                    
                     {
                         dataGridView1.Sort(dataGridView1.Columns["Column3"], ListSortDirection.Descending);
-                        dataGridView1.CurrentCell = dataGridView1.Rows[letzteZeile].Cells[2];
+                        dataGridView1.FirstDisplayedScrollingRowIndex = ersteZeile;
                     }
+                    
                     else
+                    
                     {
                         dataGridView1.Sort(dataGridView1.Columns["Column3"], ListSortDirection.Ascending);
-                        dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
+                        dataGridView1.FirstDisplayedScrollingRowIndex = letzteZeile;
                     }
                             
-                    //textBox1.Text = $" {ZeitAktuell}\t{TmpSerial.Replace(",", " \t")}" + textBox1.Text;
+                    
                 }
                 txb1.Text = WertVolt.Replace(".", ",");
                
@@ -185,6 +209,7 @@ public partial class Form1 : Form
             dataGridView1.Rows.Clear();
             zaehler = 1;
         }
+
     }
 
 }
