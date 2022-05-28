@@ -13,6 +13,7 @@ public partial class Form1 : Form
         bool Messung = false;
         bool MessungAufzeichnen = false;
         UInt16 zaehler = 1;
+        static int ersteZeile = 0;
         public Form1()
         {
             
@@ -24,6 +25,24 @@ public partial class Form1 : Form
                         
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+                
+                string[] ports = SerialPort.GetPortNames();
+                comboBoxComPort.Items.AddRange(ports);
+                
+            if (comboBoxComPort.Items.Count != 0)
+            
+            {
+                
+                comboBoxComPort.Text = comboBoxComPort.Items[0].ToString();
+            
+            }
+                
+
+           
+        }
        
         private void cBx1_CheckedChanged(Object sender, EventArgs e)
             
@@ -33,12 +52,14 @@ public partial class Form1 : Form
 
             {
                 dataGridView1.Sort(dataGridView1.Columns["Column3"], ListSortDirection.Descending);
+                dataGridView1.FirstDisplayedScrollingRowIndex = ersteZeile;
             }
 
             else
 
             {
                 dataGridView1.Sort(dataGridView1.Columns["Column3"], ListSortDirection.Ascending);
+                dataGridView1.FirstDisplayedScrollingRowIndex = ersteZeile;
             }
 
 
@@ -48,7 +69,7 @@ public partial class Form1 : Form
         {
             try
             {
-                port = new SerialPort("COM3", 115200);
+                port = new SerialPort(comboBoxComPort.Text, Convert.ToInt32(comboBoxbaudRate.Text));
                 port.DataReceived += new SerialDataReceivedEventHandler(ReceivedSerialHandler);
                 port.ReadTimeout = 500;
                 port.WriteTimeout = 500;
@@ -58,6 +79,7 @@ public partial class Form1 : Form
                 Btn1.Enabled = false;
                 Btn3.Enabled = true;
                 Btn5.Enabled = true;
+                
                 string DatumAktuell = DateTime.Now.ToString("d");
                 txb2.Text = DatumAktuell;
                 Messung = !Messung;
@@ -67,7 +89,7 @@ public partial class Form1 : Form
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                port.Close();
+                //port.Close();
                 
             }
             
@@ -85,11 +107,17 @@ public partial class Form1 : Form
                 string WertVolt = TmpSerial.Substring(0, 7);
                 //textBox1.AppendText($"{timeNow}\t{tmpSerial.Replace(",","\t")}");
                 //textBox1.Text = $" {ZeitAktuell}\t{TmpSerial.Replace(",", " \t")}" + textBox1.Text;
+                if (WertVolt.Length > 0)
+                
+                {
+                    progressBar1.Value = 1;
+                }
+
 
                 if (MessungAufzeichnen)
                 {
                     int letzteZeile = dataGridView1.RowCount;
-                    int ersteZeile = 0;
+                    //int ersteZeile = 0;
                     int zeileId = dataGridView1.Rows.Add();
                     DataGridViewRow zeile = dataGridView1.Rows[zeileId];
                     zeile.Cells["Column1"].Value = ZeitAktuell;
@@ -140,9 +168,11 @@ public partial class Form1 : Form
                     Btn1.Enabled = !Btn1.Enabled;
                     Btn3.Enabled = !Btn3.Enabled;
                     Btn5.Enabled = false;
+                    progressBar1.Value = 0;
                 }
             else
                 {
+                    progressBar1.Value = 0;
                     port.Close();
                     txb1.Text = "--,-- V";
                     //textBox1.Clear();

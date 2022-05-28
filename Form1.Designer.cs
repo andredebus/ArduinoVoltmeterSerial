@@ -47,12 +47,18 @@ namespace Arduino_Serial
             this.Btn4 = new System.Windows.Forms.Button();
             this.Btn5 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txb2 = new System.Windows.Forms.TextBox();
-            this.cBx1 = new System.Windows.Forms.CheckBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txb2 = new System.Windows.Forms.TextBox();
+            this.cBx1 = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBoxComPort = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxbaudRate = new System.Windows.Forms.ComboBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +72,7 @@ namespace Arduino_Serial
             this.Btn1.Size = new System.Drawing.Size(167, 59);
             this.Btn1.TabIndex = 0;
             this.Btn1.Text = "Verbinden";
+            this.Btn1.UseMnemonic = false;
             this.Btn1.UseVisualStyleBackColor = false;
             this.Btn1.Click += new System.EventHandler(this.Btn1_Click);
             // 
@@ -115,7 +122,7 @@ namespace Arduino_Serial
             // 
             this.Btn3.BackColor = System.Drawing.Color.DimGray;
             this.Btn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.Btn3.Location = new System.Drawing.Point(33, 94);
+            this.Btn3.Location = new System.Drawing.Point(33, 170);
             this.Btn3.Name = "Btn3";
             this.Btn3.Size = new System.Drawing.Size(167, 59);
             this.Btn3.TabIndex = 4;
@@ -154,7 +161,7 @@ namespace Arduino_Serial
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Gray;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
@@ -181,7 +188,8 @@ namespace Arduino_Serial
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.Silver;
+            this.dataGridView1.GridColor = System.Drawing.Color.Black;
+            this.dataGridView1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.dataGridView1.Location = new System.Drawing.Point(537, 12);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -204,45 +212,6 @@ namespace Arduino_Serial
             this.dataGridView1.Size = new System.Drawing.Size(437, 513);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 10;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DimGray;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(267, 94);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(214, 60);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Messung löschen";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // txb2
-            // 
-            this.txb2.BackColor = System.Drawing.Color.Black;
-            this.txb2.Cursor = System.Windows.Forms.Cursors.No;
-            this.txb2.Enabled = false;
-            this.txb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb2.ForeColor = System.Drawing.Color.GhostWhite;
-            this.txb2.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.txb2.Location = new System.Drawing.Point(37, 223);
-            this.txb2.Name = "txb2";
-            this.txb2.Size = new System.Drawing.Size(118, 26);
-            this.txb2.TabIndex = 12;
-            this.txb2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // cBx1
-            // 
-            this.cBx1.AutoSize = true;
-            this.cBx1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBx1.ForeColor = System.Drawing.Color.GhostWhite;
-            this.cBx1.Location = new System.Drawing.Point(537, 544);
-            this.cBx1.Name = "cBx1";
-            this.cBx1.Size = new System.Drawing.Size(178, 20);
-            this.cBx1.TabIndex = 13;
-            this.cBx1.Text = "Letzte Messung zuerst";
-            this.cBx1.UseVisualStyleBackColor = true;
-            this.cBx1.CheckedChanged += new System.EventHandler(this.cBx1_CheckedChanged);
             // 
             // Column1
             // 
@@ -277,14 +246,124 @@ namespace Arduino_Serial
             this.Column3.ReadOnly = true;
             this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DimGray;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(267, 94);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(214, 60);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Messung löschen";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // txb2
+            // 
+            this.txb2.BackColor = System.Drawing.Color.Black;
+            this.txb2.Cursor = System.Windows.Forms.Cursors.No;
+            this.txb2.Enabled = false;
+            this.txb2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb2.ForeColor = System.Drawing.Color.GhostWhite;
+            this.txb2.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.txb2.Location = new System.Drawing.Point(320, 185);
+            this.txb2.Name = "txb2";
+            this.txb2.Size = new System.Drawing.Size(118, 26);
+            this.txb2.TabIndex = 12;
+            this.txb2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cBx1
+            // 
+            this.cBx1.AutoSize = true;
+            this.cBx1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBx1.ForeColor = System.Drawing.Color.GhostWhite;
+            this.cBx1.Location = new System.Drawing.Point(537, 544);
+            this.cBx1.Name = "cBx1";
+            this.cBx1.Size = new System.Drawing.Size(178, 20);
+            this.cBx1.TabIndex = 13;
+            this.cBx1.Text = "Letzte Messung zuerst";
+            this.cBx1.UseVisualStyleBackColor = true;
+            this.cBx1.CheckedChanged += new System.EventHandler(this.cBx1_CheckedChanged);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.DimGray;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.GhostWhite;
+            this.button2.Location = new System.Drawing.Point(804, 534);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(169, 38);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Export nach Excel";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // comboBoxComPort
+            // 
+            this.comboBoxComPort.FormattingEnabled = true;
+            this.comboBoxComPort.Location = new System.Drawing.Point(37, 90);
+            this.comboBoxComPort.Name = "comboBoxComPort";
+            this.comboBoxComPort.Size = new System.Drawing.Size(132, 21);
+            this.comboBoxComPort.TabIndex = 15;
+            this.comboBoxComPort.ValueMember = "PortName";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 74);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Serielle Schnittstelle";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(34, 114);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Baudrate";
+            // 
+            // comboBoxbaudRate
+            // 
+            this.comboBoxbaudRate.FormattingEnabled = true;
+            this.comboBoxbaudRate.Items.AddRange(new object[] {
+            "9600",
+            "19200",
+            "38400",
+            "57600",
+            "115200"});
+            this.comboBoxbaudRate.Location = new System.Drawing.Point(37, 130);
+            this.comboBoxbaudRate.Name = "comboBoxbaudRate";
+            this.comboBoxbaudRate.Size = new System.Drawing.Size(132, 21);
+            this.comboBoxbaudRate.TabIndex = 17;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(8, 29);
+            this.progressBar1.MarqueeAnimationSpeed = 5000;
+            this.progressBar1.Maximum = 1;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(19, 22);
+            this.progressBar1.Step = 1;
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1003, 576);
+            this.ClientSize = new System.Drawing.Size(1003, 581);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBoxbaudRate);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBoxComPort);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.cBx1);
             this.Controls.Add(this.txb2);
             this.Controls.Add(this.button1);
@@ -303,9 +382,9 @@ namespace Arduino_Serial
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Arduino RS232 Kommunikation";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -330,6 +409,12 @@ namespace Arduino_Serial
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBoxComPort;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBoxbaudRate;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 
 }
