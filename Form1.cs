@@ -9,7 +9,7 @@ namespace Arduino_Serial
     
 public partial class Form1 : Form
     {
-        SerialPort port;
+        static SerialPort port;
         bool Messung = false;
         bool MessungAufzeichnen = false;
         UInt16 zaehler = 1;
@@ -51,14 +51,14 @@ public partial class Form1 : Form
             if (cBx1.Checked)
 
             {
-                dataGridView1.Sort(dataGridView1.Columns["Column3"], ListSortDirection.Descending);
+                dataGridView1.Sort(dataGridView1.Columns["messNr"], ListSortDirection.Descending);
                 dataGridView1.FirstDisplayedScrollingRowIndex = ersteZeile;
             }
 
             else
 
             {
-                dataGridView1.Sort(dataGridView1.Columns["Column3"], ListSortDirection.Ascending);
+                dataGridView1.Sort(dataGridView1.Columns["messNr"], ListSortDirection.Ascending);
                 dataGridView1.FirstDisplayedScrollingRowIndex = ersteZeile;
             }
 
@@ -67,31 +67,65 @@ public partial class Form1 : Form
 
         private void Btn1_Click(object sender, EventArgs e)
         {
-            try
+            if (comboBoxComPort.Items.Count > 0)
             {
-                port = new SerialPort(comboBoxComPort.Text, Convert.ToInt32(comboBoxbaudRate.Text));
-                port.DataReceived += new SerialDataReceivedEventHandler(ReceivedSerialHandler);
-                port.ReadTimeout = 500;
-                port.WriteTimeout = 500;
-                port.Open();
-                port.DiscardOutBuffer();
-                port.WriteLine("1");
-                Btn1.Enabled = false;
-                Btn3.Enabled = true;
-                Btn5.Enabled = true;
-                
-                string DatumAktuell = DateTime.Now.ToString("d");
-                txb2.Text = DatumAktuell;
-                Messung = !Messung;
+                try
+                {
+                    port = new SerialPort(comboBoxComPort.Text, Convert.ToInt32(comboBoxbaudRate.Text));
+                    port.DataReceived += new SerialDataReceivedEventHandler(ReceivedSerialHandler);
+                    port.ReadTimeout = 500;
+                    port.WriteTimeout = 500;
+                    port.Open();
+                    port.DiscardOutBuffer();
+                    port.WriteLine("1");
+                    Btn1.Enabled = false;
+                    Btn3.Enabled = true;
+                    Btn5.Enabled = true;
 
+                    string DatumAktuell = DateTime.Now.ToString("d");
+                    txb2.Text = DatumAktuell;
+                    Messung = !Messung;
+
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    //port.Close();
+
+                }
             }
-
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-                //port.Close();
-                
+            Form1_Load(this, null); 
             }
+            
+
+            //try
+            //{
+            //    port = new SerialPort(comboBoxComPort.Text, Convert.ToInt32(comboBoxbaudRate.Text));
+            //    port.DataReceived += new SerialDataReceivedEventHandler(ReceivedSerialHandler);
+            //    port.ReadTimeout = 500;
+            //    port.WriteTimeout = 500;
+            //    port.Open();
+            //    port.DiscardOutBuffer();
+            //    port.WriteLine("1");
+            //    Btn1.Enabled = false;
+            //    Btn3.Enabled = true;
+            //    Btn5.Enabled = true;
+                
+            //    string DatumAktuell = DateTime.Now.ToString("d");
+            //    txb2.Text = DatumAktuell;
+            //    Messung = !Messung;
+
+            //}
+
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    //port.Close();
+                
+            //}
             
         }
         public void ReceivedSerialHandler(object sender, SerialDataReceivedEventArgs e)
@@ -120,23 +154,23 @@ public partial class Form1 : Form
                     //int ersteZeile = 0;
                     int zeileId = dataGridView1.Rows.Add();
                     DataGridViewRow zeile = dataGridView1.Rows[zeileId];
-                    zeile.Cells["Column1"].Value = ZeitAktuell;
-                    zeile.Cells["Column2"].Value = WertVolt.Replace(".", ",");
-                    zeile.Cells["Column3"].Value = zaehler;
+                    zeile.Cells["messZeit"].Value = ZeitAktuell;
+                    zeile.Cells["messWert"].Value = WertVolt.Replace(".", ",");
+                    zeile.Cells["messNr"].Value = zaehler;
                     zaehler += 1;
                     
                     
                     if (cBx1.Checked)
                     
                     {
-                        dataGridView1.Sort(dataGridView1.Columns["Column3"], ListSortDirection.Descending);
+                        dataGridView1.Sort(dataGridView1.Columns["messNr"], ListSortDirection.Descending);
                         dataGridView1.FirstDisplayedScrollingRowIndex = ersteZeile;
                     }
                     
                     else
                     
                     {
-                        dataGridView1.Sort(dataGridView1.Columns["Column3"], ListSortDirection.Ascending);
+                        dataGridView1.Sort(dataGridView1.Columns["messNr"], ListSortDirection.Ascending);
                         dataGridView1.FirstDisplayedScrollingRowIndex = letzteZeile;
                     }
                             
@@ -191,17 +225,17 @@ public partial class Form1 : Form
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (Messung)
+            if (MessungAufzeichnen)
             {
                 Btn5.Text = "Messung starten";
                 port.Write("1");
-                Messung = !Messung;
-                port.Close();
-                Application.Restart();
+                MessungAufzeichnen = !MessungAufzeichnen;
+                //port.Close();
+                Form1_Load(this, null);
             }
             else
             {
-                Application.Restart();
+                Form1_Load(this, null);
             }
         }
 
