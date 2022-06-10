@@ -3,17 +3,19 @@ using System.ComponentModel;
 using System.IO.Ports;
 using System.Threading;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace Arduino_Serial
 {
-    
-public partial class Form1 : Form
+
+    public partial class Form1 : Form
     {
         static SerialPort port;
         bool Messung = false;
         bool MessungAufzeichnen = false;
         UInt16 zaehler = 1;
-        static int ersteZeile = 0;
+        static readonly int ersteZeile = 0;
         public Form1()
         {
             
@@ -184,7 +186,7 @@ public partial class Form1 : Form
 
         private void Btn2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
 
         private void Btn3_Click(object sender, EventArgs e)
@@ -274,9 +276,77 @@ public partial class Form1 : Form
             zaehler = 1;
         }
 
-    }
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Excel._Application app = new Excel.Application();
+                Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+                Excel._Worksheet arbeitsmappe = null;
+                app.Visible = true;
+                arbeitsmappe = workbook.Sheets[1];
+                arbeitsmappe = workbook.ActiveSheet;
+                int spalte;
+                int zeile;
 
+                try
+                {
+                    // Spaltenüberschriften von gridview auf Excel Arbeitsmappe übertragen ACHTUNG Index Gridview startet bei 0
+                    // Index bei Excel startet bei 1 >> daher "arbeitsmappe.Cells[1, spalte + 1]"
+                    
+                    for (spalte = 0; spalte < dataGridView1.Columns.Count; ++spalte)
+                    {
+                        arbeitsmappe.Cells[1, spalte + 1] = dataGridView1.Columns[spalte].HeaderText;
+                    }
+                    for (zeile = 0; zeile < dataGridView1.Rows.Count; ++zeile)
+                    {
+                        for (spalte = 0; spalte < dataGridView1.Columns.Count; ++spalte)
+                        {
+                            if (dataGridView1.Rows[zeile].Cells[spalte].Value != null)
+                            {
+                                arbeitsmappe.Cells[zeile + 2, spalte + 1] = dataGridView1.Rows[zeile].Cells[spalte].Value.ToString();
+                            }
+                            else
+                            {
+                                arbeitsmappe.Cells[zeile + 2, spalte + 1] = "";
+                            }
+                        }
+                    for (spalte = 0; spalte < dataGridView1.Columns.Count; ++spalte)
+                    {
+                    arbeitsmappe.Columns[spalte + 1].AutoFit();
+                    }
+                    }
+
+                    //Getting the location and file name of the excel to save from user.
+                    //SaveFileDialog saveDialog = new SaveFileDialog();
+                    //saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                    //saveDialog.FilterIndex = 2;
+
+                    //if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    //{
+                    //    workbook.SaveAs(saveDialog.FileName);
+                    //    MessageBox.Show("Export Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                finally
+                {
+                    
+                    app.Quit();
+                    workbook = null;
+                    arbeitsmappe = null;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+        }
+    }
 }
+
+
 
 
 

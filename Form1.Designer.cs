@@ -47,6 +47,9 @@ namespace Arduino_Serial
             this.Btn4 = new System.Windows.Forms.Button();
             this.Btn5 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.messZeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.messWert = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.messNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.txb2 = new System.Windows.Forms.TextBox();
             this.cBx1 = new System.Windows.Forms.CheckBox();
@@ -56,9 +59,6 @@ namespace Arduino_Serial
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxbaudRate = new System.Windows.Forms.ComboBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.messZeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.messWert = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.messNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -178,6 +178,38 @@ namespace Arduino_Serial
             this.dataGridView1.ShowRowErrors = false;
             this.dataGridView1.StandardTab = true;
             // 
+            // messZeit
+            // 
+            this.messZeit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(1);
+            this.messZeit.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.messZeit, "messZeit");
+            this.messZeit.Name = "messZeit";
+            this.messZeit.ReadOnly = true;
+            // 
+            // messWert
+            // 
+            this.messWert.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.messWert.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.messWert, "messWert");
+            this.messWert.Name = "messWert";
+            this.messWert.ReadOnly = true;
+            this.messWert.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // messNr
+            // 
+            this.messNr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = null;
+            this.messNr.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.messNr, "messNr");
+            this.messNr.Name = "messNr";
+            this.messNr.ReadOnly = true;
+            this.messNr.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.DimGray;
@@ -209,6 +241,7 @@ namespace Arduino_Serial
             this.button2.ForeColor = System.Drawing.Color.GhostWhite;
             this.button2.Name = "button2";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // comboBoxComPort
             // 
@@ -248,38 +281,6 @@ namespace Arduino_Serial
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Step = 1;
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            // 
-            // messZeit
-            // 
-            this.messZeit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(1);
-            this.messZeit.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.messZeit, "messZeit");
-            this.messZeit.Name = "messZeit";
-            this.messZeit.ReadOnly = true;
-            // 
-            // messWert
-            // 
-            this.messWert.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.messWert.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.messWert, "messWert");
-            this.messWert.Name = "messWert";
-            this.messWert.ReadOnly = true;
-            this.messWert.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // messNr
-            // 
-            this.messNr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = null;
-            this.messNr.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.messNr, "messNr");
-            this.messNr.Name = "messNr";
-            this.messNr.ReadOnly = true;
-            this.messNr.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Form1
             // 
