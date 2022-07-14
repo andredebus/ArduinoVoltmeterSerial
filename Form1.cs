@@ -93,42 +93,12 @@ namespace Arduino_Serial
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                    //port.Close();
-
                 }
             }
             else
             {
             Form1_Load(this, null); 
             }
-            
-
-            //try
-            //{
-            //    port = new SerialPort(comboBoxComPort.Text, Convert.ToInt32(comboBoxbaudRate.Text));
-            //    port.DataReceived += new SerialDataReceivedEventHandler(ReceivedSerialHandler);
-            //    port.ReadTimeout = 500;
-            //    port.WriteTimeout = 500;
-            //    port.Open();
-            //    port.DiscardOutBuffer();
-            //    port.WriteLine("1");
-            //    Btn1.Enabled = false;
-            //    Btn3.Enabled = true;
-            //    Btn5.Enabled = true;
-                
-            //    string DatumAktuell = DateTime.Now.ToString("d");
-            //    txb2.Text = DatumAktuell;
-            //    Messung = !Messung;
-
-            //}
-
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //    //port.Close();
-                
-            //}
-            
         }
         public void ReceivedSerialHandler(object sender, SerialDataReceivedEventArgs e)
        
@@ -141,8 +111,6 @@ namespace Arduino_Serial
                 string ZeitAktuell = DateTime.Now.ToString("T");
                 string TmpSerial = sp.ReadExisting();
                 string WertVolt = TmpSerial.Substring(0, 7);
-                //textBox1.AppendText($"{timeNow}\t{tmpSerial.Replace(",","\t")}");
-                //textBox1.Text = $" {ZeitAktuell}\t{TmpSerial.Replace(",", " \t")}" + textBox1.Text;
                 if (WertVolt.Length > 0)
                 
                 {
@@ -153,7 +121,6 @@ namespace Arduino_Serial
                 if (MessungAufzeichnen)
                 {
                     int letzteZeile = dataGridView1.RowCount;
-                    //int ersteZeile = 0;
                     int zeileId = dataGridView1.Rows.Add();
                     DataGridViewRow zeile = dataGridView1.Rows[zeileId];
                     zeile.Cells["messZeit"].Value = ZeitAktuell;
@@ -211,7 +178,6 @@ namespace Arduino_Serial
                     progressBar1.Value = 0;
                     port.Close();
                     txb1.Text = "--,-- V";
-                    //textBox1.Clear();
                     Btn1.Enabled = !Btn1.Enabled;
                     Btn3.Enabled = !Btn3.Enabled;
                     Btn5.Enabled = false;
@@ -232,7 +198,6 @@ namespace Arduino_Serial
                 Btn5.Text = "Messung starten";
                 port.Write("1");
                 MessungAufzeichnen = !MessungAufzeichnen;
-                //port.Close();
                 Form1_Load(this, null);
             }
             else
@@ -313,20 +278,11 @@ namespace Arduino_Serial
                         }
                     for (spalte = 0; spalte < dataGridView1.Columns.Count; ++spalte)
                     {
-                    arbeitsmappe.Columns[spalte + 1].AutoFit();
+                        arbeitsmappe.Columns[spalte + 1].AutoFit();
                     }
+                        arbeitsmappe.Cells.Style.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     }
 
-                    //Getting the location and file name of the excel to save from user.
-                    //SaveFileDialog saveDialog = new SaveFileDialog();
-                    //saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-                    //saveDialog.FilterIndex = 2;
-
-                    //if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    //{
-                    //    workbook.SaveAs(saveDialog.FileName);
-                    //    MessageBox.Show("Export Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //}
                 }
                 catch (System.Exception ex)
                 {
